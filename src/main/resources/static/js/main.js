@@ -1,3 +1,8 @@
+
+'use strict';
+    
+var host = "http://localhost:8080"
+//var host = "https://randomspeakers.herokuapp.com/"
 var usernamePage = document.querySelector('#username-page');
 var chatPage = document.querySelector('#chat-page');
 var usernameForm = document.querySelector('#usernameForm');
@@ -32,10 +37,10 @@ function connect(event) {
 
 function onConnected() {
     // Subscribe to the Public Topic
-    stompClient.subscribe('/topic/public', onMessageReceived);
+    stompClient.send('/topic/public', onMessageReceived);
 
     // Tell your username to the server
-    stompClient.send("/chat.addUser",
+    stompClient.send("/app/chat.addUser",
         {},
         JSON.stringify({sender: username, type: 'JOIN'})
     )
@@ -52,13 +57,15 @@ function onError(error) {
 
 function sendMessage(event) {
     var messageContent = messageInput.value.trim();
+
     if(messageContent && stompClient) {
         var chatMessage = {
             sender: username,
             content: messageInput.value,
             type: 'CHAT'
         };
-        stompClient.send("/chat.sendMessage", {}, JSON.stringify(chatMessage));
+
+        stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
         messageInput.value = '';
     }
     event.preventDefault();
@@ -108,6 +115,7 @@ function getAvatarColor(messageSender) {
     for (var i = 0; i < messageSender.length; i++) {
         hash = 31 * hash + messageSender.charCodeAt(i);
     }
+
     var index = Math.abs(hash % colors.length);
     return colors[index];
 }
