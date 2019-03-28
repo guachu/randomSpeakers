@@ -25,9 +25,6 @@ HOME
 ![](img/class.PNG)
 
 
-### Diagrama de actividad
-![](img/activity.PNG)
-
 ### Diagrama de componentes
 ![](img/component.PNG)
 
