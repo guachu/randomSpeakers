@@ -1,8 +1,8 @@
 
 'use strict';
     
-var host = "http://localhost:8080"
-//var host = "https://randomspeakers.herokuapp.com/"
+//var host = "http://localhost:8080"
+var host = "https://randomspeakers.herokuapp.com/"
 var usernamePage = document.querySelector('#username-page');
 var chatPage = document.querySelector('#chat-page');
 var usernameForm = document.querySelector('#usernameForm');
