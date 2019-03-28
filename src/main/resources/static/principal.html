@@ -17,7 +17,11 @@
         <link rel="stylesheet" href="css/skins/_all-skins.min.css">
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    </head>
+		
+		<!-- chat -->
+		<link rel="stylesheet" href="/css/main.css" />
+		
+	</head>
     <body class="hold-transition skin-blue sidebar-mini">
         <header class="main-header">
             <a href="principal.html" class="logo">
@@ -106,111 +110,54 @@
 					  
 					  <!-- /.box -->
 						<div class="row">
-							<div class="col-md-6">
-								<!-- DIRECT CHAT -->
-								<div class="box box-warning direct-chat direct-chat-warning">
-									<div class="box-header with-border">
-										<h3 class="box-title">Chat Directo</h3>
-
-										<div class="box-tools pull-right">
-											<span data-toggle="tooltip" title="" class="badge bg-yellow" data-original-title="3 New Messages">3</span>
+							<div id="username-page">
+								<div class="username-page-container">
+									<h1 class="title">Type your username</h1>
+									<form id="usernameForm" name="usernameForm">
+										<div class="form-group">
+											<input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />
 										</div>
-									</div>
-									<!-- /.box-header -->
-									<div class="box-body">
-										<!-- Conversations are loaded here -->
-										<div class="direct-chat-messages">
-											<!-- Message. Default to the left -->
-											<div class="direct-chat-msg">
-												<div class="direct-chat-info clearfix">
-													<span class="direct-chat-name pull-left">Alexander Pierce</span>
-													<span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-												</div>
-												<!-- /.direct-chat-info -->
-												<img class="direct-chat-img" src="https://cnam.ca/wp-content/uploads/2018/06/default-profile-300x300.gif" alt="message user image">
-												<!-- /.direct-chat-img -->
-												<div class="direct-chat-text">
-													Hola
-												</div>
-												<!-- /.direct-chat-text -->
-											</div>
-											<!-- /.direct-chat-msg -->
-
-											<!-- Message to the right -->
-											<div class="direct-chat-msg right">
-												<div class="direct-chat-info clearfix">
-													<span class="direct-chat-name pull-right">Sarah Bullock</span>
-													<span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
-												</div>
-												<!-- /.direct-chat-info -->
-												<img class="direct-chat-img" src="https://cnam.ca/wp-content/uploads/2018/06/default-profile-300x300.gif" alt="message user image">
-												<!-- /.direct-chat-img -->
-												<div class="direct-chat-text">
-													Hola, ¿cómo vas?
-												</div>
-											<!-- /.direct-chat-text -->
-											</div>
-											<!-- /.direct-chat-msg -->
-
-											<!-- Message. Default to the left -->
-											<div class="direct-chat-msg">
-												<div class="direct-chat-info clearfix">
-													<span class="direct-chat-name pull-left">Alexander Pierce</span>
-													<span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span>
-												</div>
-												<!-- /.direct-chat-info -->
-												<img class="direct-chat-img" src="https://cnam.ca/wp-content/uploads/2018/06/default-profile-300x300.gif" alt="message user image">
-												<!-- /.direct-chat-img -->
-												<div class="direct-chat-text">
-													Bien ¿y tú?
-												</div>
-												<!-- /.direct-chat-text -->
-											</div>
-											<!-- /.direct-chat-msg -->
-
-											<!-- Message to the right -->
-											<div class="direct-chat-msg right">
-												<div class="direct-chat-info clearfix">
-													<span class="direct-chat-name pull-right">Sarah Bullock</span>
-													<span class="direct-chat-timestamp pull-left">23 Jan 6:10 pm</span>
-												</div>
-												<!-- /.direct-chat-info -->
-												<img class="direct-chat-img" src="https://cnam.ca/wp-content/uploads/2018/06/default-profile-300x300.gif" alt="message user image">
-												<!-- /.direct-chat-img -->
-												<div class="direct-chat-text">
-													Bien
-												</div>
-												<!-- /.direct-chat-text -->
-											</div>
-											<!-- /.direct-chat-msg -->
+										<div class="form-group">
+											<button type="submit" class="accent username-submit">Start Chatting</button>
 										</div>
-										<!--/.direct-chat-messages-->
-										<!-- /.direct-chat-pane -->
-									</div>
-									<!-- /.box-body -->
-									<div class="box-footer">
-										<form action="#" method="post">
-											<div class="input-group">
-												<input type="text" name="message" placeholder="Type Message ..." class="form-control">
-												<span class="input-group-btn">
-													<button type="button" class="btn btn-warning btn-flat">Send</button>
-												</span>
-											</div>
-										</form>
-									</div>
-									<!-- /.box-footer-->
+									</form>
 								</div>
-								<!--/.direct-chat -->
 							</div>
-							<!-- /.col -->		
-							<!-- /.col -->
-						</div>
+						</div>	
+							
 						<!-- /.row -->
 					</div>
 				</div>
 				<!-- /.row -->
+				<div id="chat-page" class="hidden">
+					<div class="chat-container">
+						<div class="chat-header">
+							<h2>Spring WebSocket Chat Demo</h2>
+						</div>
+						<div class="connecting">
+							Connecting...
+						</div>
+						<ul id="messageArea">
+
+						</ul>
+						<form id="messageForm" name="messageForm">
+							<div class="form-group">
+								<div class="input-group clearfix">
+									<input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
+									<button type="submit" class="primary">Send</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				
 			</section>
 			<!-- /.content -->
 		</div>
+		
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+		<script src="/js/main.js"></script>
     </body>
 </html>

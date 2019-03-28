@@ -9,5 +9,4 @@ public class RandomSpeakersApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RandomSpeakersApplication.class, args);
 	}
-
 }
