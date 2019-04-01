@@ -27,15 +27,20 @@ function connect(event) {
         chatPage.classList.remove('hidden');
 
         var socket = new SockJS('/ws');
-        stompClient = Stomp.over(socket);
+        stompClient = Stomp.over(function() {
+            return new SockJS('ws:localhost:8080/ws')
+        });
+        // https://github.com/stomp-js/samples/
+        //stompClient = Stomp.client('ws:localhost:8080/ws');
 
-        stompClient.connect({}, onConnected, onError);
+        stompClient.connect({login: "guest",passcode: "guest"}, onConnected, onError);
     }
     event.preventDefault();
 }
 
 
-function onConnected() {
+function onConnected(Frame) {
+    console.log("Frame "+Frame);
     // Subscribe to the Public Topic
     stompClient.send('/topic/public', onMessageReceived);
 
@@ -50,6 +55,7 @@ function onConnected() {
 
 
 function onError(error) {
+    console.log("Error: "+error);
     connectingElement.textContent = 'Could not connect to WebSocket server. Please refresh this page to try again!';
     connectingElement.style.color = 'red';
 }
