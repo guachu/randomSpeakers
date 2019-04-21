@@ -88,9 +88,9 @@
 					</span>
 				</a>
 				  <ul class="treeview-menu">
-					<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Carros</a></li>
-					<li><a href="index.html"><i class="fa fa-circle-o"></i> Motos</a></li>
-					<li><a href="index.html"><i class="fa fa-circle-o"></i> Aves</a></li>
+					<li class="active"><a href="index.html" onclick="app.init(1)"><i class="fa fa-circle-o"></i> Carros</a></li>
+					<li><a href="index.html" onclick="app.init(2)"><i class="fa fa-circle-o"></i> Motos</a></li>
+					<li><a href="index.html" onclick="app.init(3)"><i class="fa fa-circle-o"></i> Aves</a></li>
 				  </ul>
                 </li>
                 <li class="treeview">
@@ -109,7 +109,7 @@
                                 </div>
                                 <div class="form-group">
                                     
-                                        <button type="submit" class="accent username-submit">Start Chatting</button>
+                                    <button type="button" class="accent username-submit" onclick="app.init(1)">Start Chatting</button>
                                         
                                 </div>
                         </form>
@@ -154,7 +154,7 @@
                                                                     <div class="form-group">
                                                                             <div class="input-group clearfix">
                                                                                     <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
-                                                                                    <button type="submit" class="primary">Send</button>
+                                                                                    <button type="button" class="primary" onclick="app.send()">Send</button>
                                                                             </div>
                                                                     </div>
                                                             </form>
