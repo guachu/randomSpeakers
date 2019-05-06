@@ -26,27 +26,27 @@ var app = (function () {
         '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
     ];
 
-    //function connect(event) {
-    //    username = document.querySelector('#name').value.trim();
 
-    //    if(username) {
-    //        usernamePage.classList.add('hidden');
-    //        chatPage.classList.remove('hidden');
-    //
-    //        var socket = new SockJS('/gs-guide-websocket');
-    //        stompClient = Stomp.over(socket);
-            // https://github.com/stomp-js/samples/
-            //stompClient = Stomp.client('ws:localhost:8080/ws');
-
-    //        stompClient.connect({}, onConnected, onError);
-    //    }
-    //    event.preventDefault();
-    //}
 
 
     var connectAndSubscribe = function () {
         
+        var contentHeader = document.getElementById("tituloPrincipal");
+        console.log(contentHeader);
+        if (roomid == 1){
+            contentHeader.innerHTML = 'Carros';
+        }
+        else if (roomid == 2){
+            contentHeader.innerHTML = 'Motos';
+        }
+        else if (roomid == 3){
+            contentHeader.innerHTML = 'Aves';
+        }
+        else{
+
+        }
         document.getElementById('messageArea').innerHTML = '';
+        console.log(document.getElementById('messageArea'));
         username = document.querySelector('#name').value.trim();
         if(username) {
             usernamePage.classList.add('hidden');
@@ -85,6 +85,17 @@ var app = (function () {
 
         //connectingElement.classList.add('hidden');
     }
+
+
+    /*function HideShow(){
+        var barritaLateral = document.getElementsByClassName("sidebar-toggle");
+        if(barritaLateral.style.display == 'none'){
+            barritaLateral.style.display = 'block';
+        }
+        else{
+            barritaLateral.style.display = 'none';  
+        }
+    }*/
 
 
     function onError(error) {
@@ -167,9 +178,18 @@ var app = (function () {
     return {
 
         init: function (val) {
-            
-            room = "/topic/tema." + val;  
-            roomid = val;
+            if (roomid == null){
+                room = "/topic/tema." + val;  
+                roomid = val;
+            }
+            else{
+                if(val != roomid){
+                    roomid = val;
+                    
+                }
+                room = "/topic/tema." + roomid;  
+                
+            }
             connectAndSubscribe()
         },
         send: function(){
@@ -178,8 +198,8 @@ var app = (function () {
     };
 
     
-    //messageForm.addEventListener('submit', sendMessage, true)
+
 })();
 
 
-//usernameForm.addEventListener('submit', app.init(1), true)
+

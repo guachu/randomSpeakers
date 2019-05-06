@@ -30,7 +30,7 @@
             </a>
             <nav class="navbar navbar-static-top">
                 <!-- TODO -->
-                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <a  class="sidebar-toggle" data-toggle="push-menu" role="button" onclick="HideShow()">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
                 <div class="navbar-custom-menu">
@@ -118,7 +118,7 @@
 		<div class="content-wrapper" style="min-height: 906px;">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-			  <h1>Tema</h1>
+			  <h1 id = "tituloPrincipal"></h1>
 			  <ol class="breadcrumb">
 				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 				<li class="active">Dashboard</li>
@@ -140,25 +140,25 @@
 						</div>	
 						
 						<div id="chat-page" class="hidden">
-                                                    <div class="chat-container">
-                                                            <div class="chat-header">
-                                                                    <h2>Sala de chat</h2>
-                                                            </div>
-                                                            <div class="connecting">
-                                                                    Connecting...
-                                                            </div>
-                                                        
-                                                            <ul id="messageArea"></ul>
-                                                            
-                                                            <form id="messageForm" name="messageForm">
-                                                                    <div class="form-group">
-                                                                            <div class="input-group clearfix">
-                                                                                    <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
-                                                                                    <button type="button" class="primary" onclick="app.send()">Send</button>
-                                                                            </div>
-                                                                    </div>
-                                                            </form>
+                            <div class="chat-container">
+                                    <div class="chat-header">
+                                            <h2>Sala de chat</h2>
+                                    </div>
+                                    <div class="connecting">
+                                            Connecting...
+                                    </div>
+                                
+                                    <ul id="messageArea"></ul>
+                                    
+                                    <form id="messageForm" name="messageForm">
+                                            <div class="form-group">
+                                                    <div class="input-group clearfix">
+                                                            <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
+                                                            <button type="button" class="primary" onclick="app.send()">Send</button>
                                                     </div>
+                                            </div>
+                                    </form>
+                            </div>
                                                     
 						</div>
 							
