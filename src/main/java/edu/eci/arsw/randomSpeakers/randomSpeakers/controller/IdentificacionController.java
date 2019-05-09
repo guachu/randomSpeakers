@@ -20,8 +20,19 @@ public class IdentificacionController{
     @Autowired
     IdentificacionServices idSe;
 
-    @PostMapping
+    @PostMapping("/Registrar")
+    public ResponseEntity<?> RegistrarUsuario(@RequestBody User usuario){
+        try {
+            System.out.println(usuario.toString());
+            return new ResponseEntity<>(idSe.Registrar(usuario), HttpStatus.ACCEPTED);
+            
+        } catch (Exception e) {
+            //TODO: handle exception
+            return new ResponseEntity<>("Este usuario este ya existe",HttpStatus.NOT_FOUND);
+        }
+    }
 
+    @PostMapping
     public ResponseEntity<?> IdentificarUsuario(@RequestBody User usuario){
         try {
             System.out.println(usuario);

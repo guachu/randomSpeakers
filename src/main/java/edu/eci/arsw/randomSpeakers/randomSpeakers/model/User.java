@@ -9,7 +9,8 @@ public class User{
     //Atributos
 
     String  nombre;
-    String constrasenia;
+    String  mail;
+    String contrasenia;
 
 
 
@@ -35,17 +36,34 @@ public class User{
     /**
      * @return the constrasenia
      */
-    public String getConstrasenia() {
-        return constrasenia;
+    public String getContrasenia() {
+        return contrasenia;
     }
 
     /**
      * @param constrasenia the constrasenia to set
      */
-    public void setConstrasenia(String constrasenia) {
-        this.constrasenia = constrasenia;
+    public void setContrasenia(String constrasenia) {
+        this.contrasenia = constrasenia;
+    }
+
+    /**
+     * @return email
+     */
+    public String getMail() {
+        return mail;
+    }
+
+    /**
+     * @param mail the mail to set
+     */
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
 
+    public String toString(){
+        return nombre + " " +contrasenia + " " + mail;
+    }
 
 }
