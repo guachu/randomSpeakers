@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-RandomSpeakersApplication<randomSpeakers>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "edu.eci.arsw.randomSpeakers.randomSpeakers.RandomSpeakersApplication",
+            "projectName": "randomSpeakers",
+            "args": ""
+        }
+    ]
+}
