@@ -3,6 +3,7 @@ package edu.eci.arsw.randomSpeakers.randomSpeakers.services;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -16,9 +17,7 @@ import edu.eci.arsw.randomSpeakers.randomSpeakers.model.User;
 @Service
 public class IdentificacionServices{
 
-
-
-    private final String url = "jdbc:postgresql://ec2-54-235-167-210.compute-1.amazonaws.com:5432/d8torhf8i3aipf";
+	private final String url = "jdbc:postgresql://ec2-54-235-167-210.compute-1.amazonaws.com:5432/d8torhf8i3aipf";
 	private final String user = "ksqxlvlwavkjkm";
 	private final String password = "1ac34e0a8218bfc0263e6afacc880bbfbc198bec0a984894296e1cddbc3608b2";
 
@@ -47,9 +46,12 @@ public class IdentificacionServices{
 			try (Connection conn = connect();
 				PreparedStatement pstmt = conn.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS)) {
 				pstmt.setString(1, usuario.getNombre());
-				pstmt.setString(2, usuario.getMail());
-				pstmt.setString(3, usuario.getContrasenia());
-				correcto = pstmt.execute();
+				pstmt.setString(2, usuario.getContrasenia());
+				pstmt.setString(3, usuario.getMail());
+				int l = pstmt.executeUpdate();
+				if (l == 1)
+					correcto = true;
+				System.out.println("valor de la ejecucion: "+l);
 			} catch (SQLException ex) {
 				System.out.println(ex.getMessage());
 			}
@@ -58,9 +60,6 @@ public class IdentificacionServices{
 		else{
 			return false;
 		}
-		
-			
-		
 	}
 
     public Boolean Autenticar(User usuario){
@@ -78,12 +77,24 @@ public class IdentificacionServices{
 			System.out.println(usuario.getContrasenia());
 			
 			correcto = pstmt.execute();
+			String res = "";
+			if (correcto){
+				ResultSet rs = pstmt.executeQuery();
+				while (rs.next()) {
+					System.out.println("query: "+rs.getString("exists"));
+					res = rs.getString("exists");
+				}
+			}
+			if (res.equals("t"))
+				return true;
+			else if (res.equals("f"))
+				return false;			
 		} catch (SQLException ex) {
 			
 			System.out.println(ex.getMessage());
 		}
 		
-		System.out.println(" si:" + correcto);
+		System.out.println("si: " + correcto);
 		return correcto;
     }
 
