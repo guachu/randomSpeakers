@@ -296,3 +296,8 @@ button.accent {
         font-size: 1.1em;
     }
 }
+canvas{
+  background:#E91E63;  
+  width:50%;
+  height:50%;
+}

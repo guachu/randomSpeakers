@@ -88,9 +88,9 @@
 					</span>
 				</a>
 				  <ul class="treeview-menu">
-					<li class="active"><a href="index.html" onclick="app.init(1)"><i class="fa fa-circle-o"></i> Carros</a></li>
-					<li><a href="index.html" onclick="app.init(2)"><i class="fa fa-circle-o"></i> Motos</a></li>
-					<li><a href="index.html" onclick="app.init(3)"><i class="fa fa-circle-o"></i> Aves</a></li>
+					<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Carros</a></li>
+					<li><a href="index.html"><i class="fa fa-circle-o"></i> Motos</a></li>
+					<li><a href="index.html"><i class="fa fa-circle-o"></i> Aves</a></li>
 				  </ul>
                 </li>
                 <li class="treeview">
@@ -100,23 +100,26 @@
             </ul>
 			
         </aside>
-        <div id="username-page">
-                <div class="username-page-container">
-                        <h1 class="title">Type your username</h1>
-                        <form id="usernameForm" name="usernameForm">
-                                <div class="form-group">
-                                        <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    
-                                    <button type="button" class="accent username-submit" onclick="app.init(1)">Start Chatting</button>
-                                        
-                                </div>
-                        </form>
-                </div>
-        </div>
+        
 		<div class="content-wrapper" style="min-height: 906px;">
-			<!-- Content Header (Page header) -->
+			
+			<div id="username-page">
+                <div class="username-page-container">
+					<h1 class="title">Type your username</h1>
+					<form id="usernameForm" name="usernameForm">
+						<div class="form-group">
+							<input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />
+						</div>
+						<div class="form-group">
+							
+							<button type="submit" class="accent username-submit">Start Chatting</button>
+								
+						</div>
+					</form>
+                </div>
+			</div>
+			
+			<!-- Content Header (Page header) 
 			<section class="content-header">
 			  <h1>Tema</h1>
 			  <ol class="breadcrumb">
@@ -124,7 +127,8 @@
 				<li class="active">Dashboard</li>
 			  </ol>
 			</section>
-
+			-->
+			
 			<!-- Main content -->
 			<section class="content">
 			  <!-- Info boxes -->
@@ -140,25 +144,25 @@
 						</div>	
 						
 						<div id="chat-page" class="hidden">
-                                                    <div class="chat-container">
-                                                            <div class="chat-header">
-                                                                    <h2>Sala de chat</h2>
-                                                            </div>
-                                                            <div class="connecting">
-                                                                    Connecting...
-                                                            </div>
-                                                        
-                                                            <ul id="messageArea"></ul>
-                                                            
-                                                            <form id="messageForm" name="messageForm">
-                                                                    <div class="form-group">
-                                                                            <div class="input-group clearfix">
-                                                                                    <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
-                                                                                    <button type="button" class="primary" onclick="app.send()">Send</button>
-                                                                            </div>
-                                                                    </div>
-                                                            </form>
-                                                    </div>
+							<div class="chat-container">
+								<div class="chat-header">
+										<h2>Sala de chat</h2>
+								</div>
+								<div class="connecting">
+										Connecting...
+								</div>
+							
+								<ul id="messageArea"></ul>
+								
+								<form id="messageForm" name="messageForm">
+									<div class="form-group">
+										<div class="input-group clearfix">
+											<input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
+											<button type="submit" class="primary">Send</button>
+										</div>
+									</div>
+								</form>
+							</div>
                                                     
 						</div>
 							
@@ -166,13 +170,18 @@
 					</div>
 				</div>
 				<!-- /.row -->
+				<div>
+					<canvas id="drawArea"></canvas>
+				</div>
 			</section>
 			<!-- /.content -->
+			
 		</div>
 		
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 		<script src="/js/main.js"></script>
+		<script src="/js/drawAr.js"></script>
     </body>
 </html>
