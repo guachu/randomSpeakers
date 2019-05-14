@@ -50,7 +50,25 @@ const handleMouseMove = e =>{
 
 const handleMouseUp = e=>{
   drawing = false
+  sendMessage()
   console.log("mi linea=>",JSON.stringify(lines))
+}
+
+function sendMessage() {
+
+	//var messageInput = document.querySelector('#message');
+    //var messageContent = messageInput.value.trim();
+
+    if(stompClient) {
+        var chatMessage = {
+            sender: username,
+            content: 'hola mundo',
+            type: 'DRAW'
+        };
+
+        stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
+        messageInput.value = '';
+    }
 }
 
 canvas.addEventListener('mousedown', handleMouseDown)
