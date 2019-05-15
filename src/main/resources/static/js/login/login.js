@@ -1,3 +1,4 @@
+
 var registerModule=(function(){
     var register=function() {
         var nameF = document.getElementById('name').value;

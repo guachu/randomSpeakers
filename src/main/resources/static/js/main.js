@@ -30,7 +30,11 @@ var app = (function () {
 
 
     var connectAndSubscribe = function () {
-        
+        /*var username2 = document.getElementById("username2");
+        username2.innerHTML = "<img src='https://cnam.ca/wp-content/uploads/2018/06/default-profile-300x300.gif' class='user-image' alt='PerfilUsuario' <span class='hidden-xs'>Mora</span>";
+        var username = document.getElementById("username");
+        console.log(username);
+        username.innerHTML = "<p>Mora</p> <a href='#'><i class='fa fa-circle text-success'></i> Online</a>";*/
         var contentHeader = document.getElementById("tituloPrincipal");
         console.log(contentHeader);
         if (roomid == 1){

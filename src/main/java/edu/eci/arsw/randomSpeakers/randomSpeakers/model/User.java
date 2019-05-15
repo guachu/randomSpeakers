@@ -14,8 +14,9 @@ public class User{
 
 
 
-    public User(){
-        
+    public User(String nombre, String contrasenia){
+        this.nombre = nombre;
+        this.contrasenia = contrasenia;
     }
 
 
