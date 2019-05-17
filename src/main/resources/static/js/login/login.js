@@ -50,7 +50,7 @@ var loginModule=(function(){
         console.log(passwordF);
         var user = { nombre : nameF, contrasenia : passwordF};
         postRequest("/api/identificacion", user, function(data){
-            location.href = "/main.html"; 
+            //location.href = "/main.html"; 
         });
         
     }

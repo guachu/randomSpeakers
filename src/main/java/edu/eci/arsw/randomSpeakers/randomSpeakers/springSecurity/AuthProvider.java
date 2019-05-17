@@ -17,7 +17,9 @@ import edu.eci.arsw.randomSpeakers.randomSpeakers.services.IdentificacionService
 public class AuthProvider implements AuthenticationProvider {
 
 	@Autowired
-	IdentificacionServices up;
+    IdentificacionServices up;
+    
+
 	@Override
     public boolean supports(Class<? extends Object> authentication) {
         return (UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication));
@@ -25,6 +27,7 @@ public class AuthProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication auth) throws AuthenticationException {
+
         User usuarioTemporal = new User(auth.getPrincipal().toString(),auth.getCredentials().toString());
         System.out.println("inicio el auth");
         System.out.println("existe"+up.Autenticar(usuarioTemporal));

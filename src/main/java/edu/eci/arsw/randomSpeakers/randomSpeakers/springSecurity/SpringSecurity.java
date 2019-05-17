@@ -27,7 +27,7 @@ public class SpringSecurity	 extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
             .ignoring()
-            .antMatchers("/resources/static/*","/styles/","/js/","/img/*")
+            .antMatchers("/resources/static/*","/assets/","/js/**","/images/*","/css/*","/TemplateBootstrapFiles/")
             .antMatchers("/webjars/**");
     }
 
@@ -35,13 +35,13 @@ public class SpringSecurity	 extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-            .antMatchers("/","/register").permitAll()
-            .antMatchers(HttpMethod.POST, "/api/v1/users/**").permitAll()
+            .antMatchers("/","/register.html").permitAll()
+            //.antMatchers(HttpMethod.POST, "/api/v1/users/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/main").permitAll()
+                .loginPage("/index.html")
+                .defaultSuccessUrl("/main.html").permitAll()
             .and()
                 .logout()
                 .logoutSuccessUrl("/")
