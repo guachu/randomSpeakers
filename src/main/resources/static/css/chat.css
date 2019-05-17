@@ -1,0 +1,24 @@
+*{
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+
+html,body {
+    overflow: hidden;
+}
+
+
+canvas{
+    background:#E91E63;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  #canvasWrapper{
+    width: 100%;
+    height: 70vh;
+    background-color: yellow;
+    overflow: hidden;
+} 

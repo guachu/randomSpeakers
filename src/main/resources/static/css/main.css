@@ -29,7 +29,7 @@ body:before {
     left: 0;
     background: #128ff2;
     content: "";
-    z-index: 0;
+    z-index: -1;
 }
 
 .clearfix:after {

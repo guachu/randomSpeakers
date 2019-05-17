@@ -18,13 +18,13 @@
 	<link rel="stylesheet" href="css/skins/_all-skins.min.css">
 
 	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+		href="https://fonts.googleapis.com/csss?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
 	<!-- chat -->
-	<link rel="stylesheet" href="/css/main.css" />
+	<link rel="stylesheet" href="/css/chat.css" />
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 
 </head>
 
@@ -58,8 +58,6 @@
 									<small>Miembro desde Nov. 2012</small>
 								</p>
 							</li>
-
-
 							<li class="user-footer">
 								<div class="pull-right">
 									<a href="#" class="btn btn-default btn-flat">Sign out</a>
@@ -68,7 +66,7 @@
 						</ul>
 					</li>
 					<li>
-						<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+						<button id="btnLogout" class="btn btn-default btn-flat">Sign out</button>
 					</li>
 				</ul>
 			</div>
@@ -125,56 +123,11 @@
 					<div class="row">
 
 					</div>
-
-					<div><button id="btnLogout">logout</button></div>
-					<div id="loginSection">
-						<form id="mainForm">
-							<div class="form-group">
-								<label for="exampleInputEmail1">Email address</label>
-								<input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
-									placeholder="Enter email">
-								<small id="emailHelp" class="form-text text-muted">We'll never share your email with
-									anyone else.</small>
-							</div>
-							<div class="form-group">
-								<label for="inputPassword">Password</label>
-								<input type="password" class="form-control" id="inputPassword" placeholder="Password">
-							</div>
-							<div class="form-group form-check">
-								<input type="checkbox" class="form-check-input" id="exampleCheck1">
-								<label class="form-check-label" for="exampleCheck1">Check me out</label>
-							</div>
-							<button type="submit" class="btn btn-primary">Submit</button>
-						</form>
-					</div>
-
-					<!-- <div id="chat-page" class="hidden">
-						<div class="chat-container">
-							<div class="chat-header">
-								<h2>Sala de chat</h2>
-							</div>
-							<div class="connecting">
-								Connecting...
-							</div>
-							<ul id="messageArea"></ul>
-							<form id="messageForm" name="messageForm">
-								<div class="form-group">
-									<div class="input-group clearfix">
-										<input type="text" id="message" placeholder="Type a message..."
-											autocomplete="off" class="form-control" />
-										<button type="submit" class="primary">Send</button>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div> -->
-
-					<!-- /.row -->
 				</div>
 			</div>
 			<!-- /.row -->
-			<div>
-				<canvas id="drawArea"></canvas>
+			<div id="canvasWrapper">
+				<canvas id="drawArea" width="2000px" height="2000px"></canvas>
 			</div>
 		</section>
 		<!-- /.content -->
@@ -209,7 +162,7 @@
 		firebase.initializeApp(firebaseConfig);
 	</script>
 
-	<script src="./js/firebaseHelper.js"></script>
+	<script src="./js/chat.js"></script>
 	<script src="/js/main.js"></script>
 	<script src="/js/drawAr.js"></script>
 </body>
