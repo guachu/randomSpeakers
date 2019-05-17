@@ -17,9 +17,11 @@ var app = (function () {
     var messageInput = document.querySelector('#message');
     var messageArea = document.querySelector('#messageArea');
     var connectingElement = document.querySelector('.connecting');
-
+    var temaActivo = null;
     var stompClient = null;
     var username = null;
+    var contador = 1;
+    var imagenConteiner = document.getElementById("imagenes");
 
     var colors = [
         '#2196F3', '#32c787', '#00BCD4', '#ff5652',
@@ -30,20 +32,26 @@ var app = (function () {
 
 
     var connectAndSubscribe = function () {
-        var imagenConteiner = document.getElementById("imagenes");
         var contentHeader = document.getElementById("tituloPrincipal");
+        var botonOculto = document.getElementById("botonImagen");
         console.log(contentHeader);
         if (roomid == 1){
             contentHeader.innerHTML = 'Carros';
-            ChangeImage("/images/carro",imagenConteiner,1);
+            temaActivo = "/images/carro";
+            ChangeImage(temaActivo,imagenConteiner,1);
+            botonOculto.classList.remove('hidden');
         }
         else if (roomid == 2){
             contentHeader.innerHTML = 'Motos';
-            ChangeImage("/images/moto",imagenConteiner,1);
+            temaActivo = "/images/moto";
+            ChangeImage(temaActivo,imagenConteiner,1);
+            botonOculto.classList.remove('hidden');
         }
         else if (roomid == 3){
             contentHeader.innerHTML = 'Aves';
-            ChangeImage("/images/ave",imagenConteiner,1);
+            temaActivo = "/images/ave";
+            ChangeImage(temaActivo,imagenConteiner,1);
+            botonOculto.classList.remove('hidden');
         }
         else{
 
@@ -91,20 +99,23 @@ var app = (function () {
 
 
     function ChangeImage(valor,imagenes,numero){
-        if(numero> 4){
-            numero=1;
+        if(numero == 1){
+                var numero = Math.floor(Math.random() * 10);
+            while(numero > 4 || numero ==0){
+                numero = Math.floor(Math.random() * 10);
+            }
+            imagenes.src= valor+numero+".jpg";
+            contador = numero + 1;
         }
-        imagenes.src= valor+numero+".jpg";
-        numero++;
-
-    }
-
-    function wait(ms)
-    {
-        var d = new Date();
-        var d2 = null;
-        do { d2 = new Date(); }
-        while(d2-d < ms);
+        else{
+            if(contador > 4){
+                contador = 1;
+            }
+            imagenes.src= valor+contador+".jpg";
+            contador++;
+            
+        }
+        
     }
 
     function onError(error) {
@@ -203,6 +214,10 @@ var app = (function () {
         },
         send: function(){
             sendMessage(event)
+        },
+
+        changeImage: function(){
+            ChangeImage(temaActivo,imagenConteiner,0);
         }
     };
 
