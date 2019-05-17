@@ -82,7 +82,6 @@
 				<div class="pull-left info">
 					<p id="userName">User</p>
 					<a id="statusOnline" href="#"><i class="fa fa-circle text-success"></i> Online</a>
-					<a id="statusOffline" href="#"><i class="fa fa-circle text-warning"></i> OffLine</a>
 				</div>
 			</div>
 		</section>
@@ -112,28 +111,29 @@
 	<div class="content-wrapper" style="min-height: 906px;">
 		<!-- Main content -->
 		<section class="content">
-			<!-- Info boxes -->
-			<!-- Main row -->
-			<div class="row">
-				<!-- Left col -->
-				<div class="col-md-12">
-					<!-- CHAT -->
-
-					<!-- /.box -->
-					<div class="row">
-
-					</div>
-				</div>
-			</div>
-			<!-- /.row -->
 			<div id="canvasWrapper">
 				<canvas id="drawArea" width="2000px" height="2000px"></canvas>
 			</div>
+
+					
+			<form id="chat-form">
+				<div class="chat-space">
+					<div class="messages-section">
+						<ul class="message-area">
+
+						</ul>
+					</div>
+					<div class="send-area">
+						<input type="text" name="messageInput" id="messageInput">
+					</div>
+					<div class="button-area">
+						<button type="submit">Enviar</button>
+					</div>
+				</div>
+			</form>
 		</section>
-		<!-- /.content -->
-
 	</div>
-
+			
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -164,7 +164,7 @@
 
 	<script src="./js/chat.js"></script>
 	<script src="/js/main.js"></script>
-	<script src="/js/drawAr.js"></script>
+	<!--<script src="/js/drawAr.js"></script>-->
 </body>
 
 </html> 
