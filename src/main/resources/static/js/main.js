@@ -30,21 +30,20 @@ var app = (function () {
 
 
     var connectAndSubscribe = function () {
-        /*var username2 = document.getElementById("username2");
-        username2.innerHTML = "<img src='https://cnam.ca/wp-content/uploads/2018/06/default-profile-300x300.gif' class='user-image' alt='PerfilUsuario' <span class='hidden-xs'>Mora</span>";
-        var username = document.getElementById("username");
-        console.log(username);
-        username.innerHTML = "<p>Mora</p> <a href='#'><i class='fa fa-circle text-success'></i> Online</a>";*/
+        var imagenConteiner = document.getElementById("imagenes");
         var contentHeader = document.getElementById("tituloPrincipal");
         console.log(contentHeader);
         if (roomid == 1){
             contentHeader.innerHTML = 'Carros';
+            ChangeImage("/images/carro",imagenConteiner,1);
         }
         else if (roomid == 2){
             contentHeader.innerHTML = 'Motos';
+            ChangeImage("/images/moto",imagenConteiner,1);
         }
         else if (roomid == 3){
             contentHeader.innerHTML = 'Aves';
+            ChangeImage("/images/ave",imagenConteiner,1);
         }
         else{
 
@@ -91,16 +90,22 @@ var app = (function () {
     }
 
 
-    /*function HideShow(){
-        var barritaLateral = document.getElementsByClassName("sidebar-toggle");
-        if(barritaLateral.style.display == 'none'){
-            barritaLateral.style.display = 'block';
+    function ChangeImage(valor,imagenes,numero){
+        if(numero> 4){
+            numero=1;
         }
-        else{
-            barritaLateral.style.display = 'none';  
-        }
-    }*/
+        imagenes.src= valor+numero+".jpg";
+        numero++;
 
+    }
+
+    function wait(ms)
+    {
+        var d = new Date();
+        var d2 = null;
+        do { d2 = new Date(); }
+        while(d2-d < ms);
+    }
 
     function onError(error) {
         console.log("Error: "+error);
