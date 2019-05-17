@@ -3,6 +3,34 @@ html,body {
 }
 
 
+
+.treeview-menu{
+  color: #FFF;
+}
+
+.treeview-menu i{
+  padding: 10px;
+}
+
+
+.buttonMenu{
+  border:none;
+  color: #8aa4af;
+  background: #333;
+  outline:none;
+}
+
+.buttonMenu:hover{
+  border:none;
+  color: #FFF;
+  background: #333;
+}
+
+.active {
+  color: #FFF;
+}
+
+
 canvas{
     background:#E91E63;
     box-sizing: border-box;
