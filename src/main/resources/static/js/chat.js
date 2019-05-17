@@ -1,14 +1,13 @@
 let canvas = document.getElementById('drawArea')
 let stompClient = null
-let room = "/topic/tema." + 10
 let roomid = 10
-
-let nickName = ""
+let roomName = ""
 const ctx = canvas.getContext('2d');
 var colors = [
     '#2196F3', '#32c787', '#00BCD4', '#ff5652',
     '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
 ];
+let currentUser = {}
 
 let drawing = false
 let avatarCollor = '#000';
@@ -27,9 +26,17 @@ function getAvatarColor(messageSender) {
     return colors[index];
 }
 
-function onMessageReceived(payload) {
-    var message = JSON.parse(payload.body);
 
+const paintDraw = message => {
+    let content = JSON.parse(message.content)
+    others[message.sender] = {
+        color: content.color,
+        lines: content.lines
+    }
+    drawOthers()
+}
+
+const addChatMessage = message => {
     var messageElement = document.createElement('li');
 
     if (message.type === 'JOIN') {
@@ -38,17 +45,6 @@ function onMessageReceived(payload) {
     } else if (message.type === 'LEAVE') {
         messageElement.classList.add('event-message');
         message.content = message.sender + ' left!';
-    }
-    else if (message.type === 'DRAW') {
-
-        others[message.sender] = {
-            color: getAvatarColor(message.sender),
-            lines: JSON.parse(message.content)
-        }
-        console.log("___________________________________________________________")
-        console.log("the sender was....", JSON.stringify(others))
-        console.log("___________________________________________________________")
-        drawOthers()
     }
     else {
 
@@ -74,42 +70,36 @@ function onMessageReceived(payload) {
 
     messageElement.appendChild(textElement);
 
-    const messageArea = document.querySelector(".message-area")
+    const messageArea = document.querySelector("#scroll")
     messageArea.appendChild(messageElement);
     messageArea.scrollTop = messageArea.scrollHeight;
 }
 
-var connectAndSubscribe = () => {
+function onMessageReceived(payload) {
+    var message = JSON.parse(payload.body);
+	if (message.type === 'DRAW') {
+        paintDraw(message)
+    }
+    else {
+        addChatMessage(message)
+    }
+}
 
-    avatarCollor = getAvatarColor(nickName)
+var connectAndSubscribe = (roomid = 20) => {
+
+    let room = `/topic/tema.${roomid}`
     var socket = new SockJS('/gs-guide-websocket');
     stompClient = Stomp.over(socket);
-
+	
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
         stompClient.subscribe(room, onMessageReceived);
         stompClient.send("/app/chat." + roomid + ".addUser",
             {},
-            JSON.stringify({ sender: nickName, type: 'JOIN' })
+            JSON.stringify({ sender: currentUser.nickName, type: 'JOIN' })
         )
     });
 }
-
-// function sendMessage(event) {
-//     var messageContent = messageInput.value.trim();
-
-//     if (messageContent && stompClient) {
-//         var chatMessage = {
-//             sender: username,
-//             content: messageInput.value,
-//             type: 'CHAT'
-//         };
-
-//         stompClient.send("/app/chat." + roomid + ".sendMessage", {}, JSON.stringify(chatMessage));
-//         messageInput.value = '';
-//     }
-//     event.preventDefault();
-// }
 
 const logout = () => {
     console.log("logout")
@@ -124,10 +114,17 @@ firebase.auth().onAuthStateChanged(
 )
 
 const setLoggedElements = (user) => {
-    const { email } = user
-    nickName = email.split('@')[0]
+    const { email, uid } = user
+    let nickName = email.split('@')[0]
     userName.innerHTML = nickName
-    connectAndSubscribe()
+    let color = getAvatarColor(nickName)
+
+    currentUser = {
+        nickName,
+        uid,
+        color
+    }
+    
 }
 
 const setLogoutElements = () => {
@@ -155,7 +152,7 @@ function sendTextMessage(event) {
 
     if (messageContent && stompClient) {
         var chatMessage = {
-            sender: nickName,
+            sender: currentUser.nickName,
             content: messageInput.value,
             type: 'CHAT'
         };
@@ -172,8 +169,8 @@ function sendMessage() {
 
     if (stompClient) {
         var chatMessage = {
-            sender: nickName,
-            content: JSON.stringify(lines),
+            sender: currentUser.uid,
+            content: JSON.stringify({ lines, color: currentUser.color }),
             type: 'DRAW'
         };
 
@@ -183,7 +180,7 @@ function sendMessage() {
 
 const drawLines = () => {
     for (let myLine of lines) {
-        drawLine(myLine, avatarCollor)
+        drawLine(myLine, currentUser.color)
     }
 }
 
@@ -237,10 +234,33 @@ const handleMouseMove = e => {
     drawLines()
 }
 
+function drawErase() {
+    let w = canvas.width;
+    let h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+}
+
+const saveDraw = async () => {
+    if (roomName && currentUser.nickName) {
+
+        let path = `Room/${roomName}/Draws/${currentUser.nickName}/`
+
+        firebase
+            .database()
+            .ref(path)
+            .set(
+                {
+                    color: currentUser.color,
+                    lines
+                }
+            );
+    }
+}
+
 const handleMouseUp = e => {
     drawing = false
+	saveDraw()
     sendMessage()
-    console.log("mi linea=>", JSON.stringify(lines))
 }
 
 const chatForm = document.querySelector("#chat-form")
@@ -249,5 +269,4 @@ chatForm.addEventListener("submit", sendTextMessage)
 canvas.addEventListener('mousedown', handleMouseDown)
 canvas.addEventListener('mousemove', handleMouseMove)
 canvas.addEventListener('mouseup', handleMouseUp)
-connectAndSubscribe()
 drawLines() 

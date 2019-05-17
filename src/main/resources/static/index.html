@@ -86,25 +86,19 @@
 			</div>
 		</section>
 		<ul class="sidebar-menu" data-widget="tree">
-			<li class="header">NAVEGACIÓN</li>
-			<li class="active treeview">
+			<li class="active">NAVEGACIÓN</li>
+			<li class="active" id="MenuTemas">
 				<a href="#">
-					<i class="fa fa-dashboard"></i> <span>Temas</span>
+					<i class="fa fa-dashboard"></i><span>Temas</span>
 					<span class="pull-right-container">
 						<i class="fa fa-angle-left pull-right"></i>
 					</span>
 				</a>
 				<ul id="treeview-menu" class="treeview-menu">
-					<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Carros</a></li>
-					<li><a href="index.html"><i class="fa fa-circle-o"></i> Motos</a></li>
-					<li><a href="index.html"><i class="fa fa-circle-o"></i> Aves</a></li>
 				</ul>
 			</li>
-			<li class="treeview">
-			</li>
-			<li class="treeview">
-			</li>
-                </ul>
+			
+        </ul>
 
 	</aside>
 
@@ -115,11 +109,10 @@
 				<canvas id="drawArea" width="2000px" height="2000px"></canvas>
 			</div>
 
-					
-			<form id="chat-form">
+			<form id="chat-form" autocomplete="off">
 				<div class="chat-space">
 					<div class="messages-section">
-						<ul class="message-area">
+						<ul id="scroll" class="message-area">
 
 						</ul>
 					</div>

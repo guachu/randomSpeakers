@@ -1,7 +1,24 @@
-const changeRoom = room => () => {
-    console.log("actualRoom id is:", room.id)
+const getDraw = async roomName => {
+    let result = {}
+    let path = `Room/${roomName}/Draws/`
+    const rooms = await firebase.database().ref(path).once('value')
+    console.log(path)
+    if (rooms) {
+        result = rooms.val()
+    }
+    return result
+}
+
+const changeRoom = room => async (event) => {
+    lines = []
+    others = {}
+    event.stopPropagation()
     const button = document.querySelector(`#room_${room.name}`)
-    //const icon = document.querySelector(`#icon_${room.name}`)
+	
+    roomName = room.node
+    roomid = room.id
+
+    connectAndSubscribe(room.id)
 
     const previusSelection = document.querySelectorAll('.buttonMenu.active')
     if (previusSelection && previusSelection.length > 0) {
@@ -9,52 +26,82 @@ const changeRoom = room => () => {
             menuButton.classList.remove("active")
         }
     }
+    console.log("________________________________________________________________________________________")
+    let draw = await getDraw(room.node)
+    console.log(draw)
 
+    let otherPainters = {}
+    if (draw && currentUser.nickName) {
+        let draws = Object.entries(draw)
+        for (let element of draws) {
+            if (element[0] === currentUser.nickName) {
+                lines = element[1].lines
+            }
+            else {
+                otherPainters[element[0]] = {
+                    lines: element[1].lines,
+                    color: element[1].color
+                }
+            }
+        }
+
+    }
+    others = otherPainters
+    drawErase()
+    drawLines()
+    drawOthers()
+    console.log(lines)
+    console.log("________________________________________________________________________________________")
     button.classList.add("active")
-    //icon.classList.add("active")
 }
 
-const getRoomTemplate = (room) => {
-
-    let template = `<i id="icon_${room.name}" class="fa fa-circle-o buttonMenu"></i>`
+const getRoomTemplate = (room, active) => {
 
     let button = document.createElement('button')
     button.innerHTML = room.name
     button.id = `room_${room.name}`
     button.classList.add("buttonMenu")
     button.addEventListener("click", changeRoom(room))
+	if (active) {
+        button.classList.add("active")
+        roomid = room.id
+        connectAndSubscribe(room.id)
+    }
 
     let newLi = document.createElement('li')
-    //newLi.innerHTML = template
     newLi.appendChild(button)
 
     return newLi
 }
 
 const getRooms = async () => {
-    console.log("________________________________________________________________________________________")
     const rooms = await firebase.database().ref("Room/").once('value')
     const roomsCollection = Object.entries(rooms.val())
-    console.log(roomsCollection)
     const ulRooms = document.querySelector("#treeview-menu")
+	let active = true
     for (let room of roomsCollection) {
 
-        ulRooms.appendChild(getRoomTemplate(room[1]))
-        // let newRoom = document.createElement('li')
-        // let italic = document.createElement('i')
-        // let buttonRoom = document.createElement('button')
-        // italic.classList.add("fa")
-        // italic.classList.add("fa-circle-o")
-        // let textnode = document.createTextNode(room[1].Name);
-        // newRoom.appendChild(italic)
-        // newRoom.appendChild(textnode)
-        // ulRooms.appendChild(newRoom)
+		let completeRoom = room[1]
+        completeRoom.node = room[0]
+        ulRooms.appendChild(getRoomTemplate(completeRoom, active))
+        active = false
     }
-    console.log("the rooms are:", rooms.val())
-    console.log("________________________________________________________________________________________")
-
-    // < li class="active" > <a href="index.html"><i class="fa fa-circle-o"></i> Carros</a></li >
-    //     <li><a href="index.html"><i class="fa fa-circle-o"></i> Motos</a></li>
-    //     <li><a href="index.html"><i class="fa fa-circle-o"></i> Aves</a></li>
 }
-getRooms() 
+
+const toogleMenu = () => {
+    const menuTemas = document.querySelector("#MenuTemas")
+    console.log("click en menu")
+    menuTemas.classList.toggle('active')
+}
+
+const addToggleInMenu = () => {
+    const menuTemas = document.querySelector("#MenuTemas")
+    menuTemas.addEventListener('click', toogleMenu)
+}
+
+const init = () => {
+    addToggleInMenu()
+    getRooms()
+}
+
+init() 
