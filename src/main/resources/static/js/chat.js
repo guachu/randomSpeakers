@@ -1,4 +1,5 @@
 var host = "http://localhost:8080/randoms/"
+//var host = "https://randomspeakers.herokuapp.com/"
 
 let canvas = document.getElementById('drawArea')
 let stompClient = null

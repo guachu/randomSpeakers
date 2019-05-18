@@ -1,4 +1,5 @@
-var host = "http://localhost:8080/randoms/users"
+//var host = "http://localhost:8080/randoms/users"
+var host = "https://randomspeakers.herokuapp.com/users"
 
 async function addUser(){
     //console.log(document.getElementById("username").value);
