@@ -1,3 +1,13 @@
+var host = "http://localhost:8080/randoms/users"
+
+async function addUser(){
+    //console.log(document.getElementById("username").value);
+    await Promise.resolve(axios.post(host+"sign-up",{
+        "username":document.getElementById("username").value,
+        "password":document.getElementById("password").value
+    }));
+    window.location.href='login';
+}
 firebase.auth().onAuthStateChanged(
     user => {
         statusEffects(user)
@@ -34,4 +44,4 @@ const main = () => {
 const myform = document.querySelector("#login-form")
 myform.addEventListener("submit", handlerSubmit)
 
-main() 
+main()

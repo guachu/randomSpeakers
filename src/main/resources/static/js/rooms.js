@@ -1,3 +1,5 @@
+var host = "http://localhost:8080/randoms/rooms"
+
 const getDraw = async roomName => {
     let result = {}
     let path = `Room/${roomName}/Draws/`
@@ -14,10 +16,10 @@ const changeRoom = room => async (event) => {
     others = {}
     event.stopPropagation()
     const button = document.querySelector(`#room_${room.name}`)
-	
+
     roomName = room.node
     roomid = room.id
-
+    unSuscribe()
     connectAndSubscribe(room.id)
 
     const previusSelection = document.querySelectorAll('.buttonMenu.active')
@@ -62,7 +64,7 @@ const getRoomTemplate = (room, active) => {
     button.id = `room_${room.name}`
     button.classList.add("buttonMenu")
     button.addEventListener("click", changeRoom(room))
-	if (active) {
+    if (active) {
         button.classList.add("active")
         roomid = room.id
         connectAndSubscribe(room.id)
@@ -78,10 +80,9 @@ const getRooms = async () => {
     const rooms = await firebase.database().ref("Room/").once('value')
     const roomsCollection = Object.entries(rooms.val())
     const ulRooms = document.querySelector("#treeview-menu")
-	let active = true
+    let active = true
     for (let room of roomsCollection) {
-
-		let completeRoom = room[1]
+        let completeRoom = room[1]
         completeRoom.node = room[0]
         ulRooms.appendChild(getRoomTemplate(completeRoom, active))
         active = false
@@ -104,4 +105,4 @@ const init = () => {
     getRooms()
 }
 
-init() 
+init()

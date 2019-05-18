@@ -1,3 +1,5 @@
+var host = "http://localhost:8080/randoms/"
+
 let canvas = document.getElementById('drawArea')
 let stompClient = null
 let roomid = 10
@@ -7,10 +9,12 @@ var colors = [
     '#2196F3', '#32c787', '#00BCD4', '#ff5652',
     '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
 ];
-let currentUser = {}
 
+
+
+let currentUser = {}
 let drawing = false
-let avatarCollor = '#000';
+let avatarCollor = '#000'
 
 let lines = []
 
@@ -26,7 +30,6 @@ function getAvatarColor(messageSender) {
     return colors[index];
 }
 
-
 const paintDraw = message => {
     let content = JSON.parse(message.content)
     others[message.sender] = {
@@ -38,7 +41,6 @@ const paintDraw = message => {
 
 const addChatMessage = message => {
     var messageElement = document.createElement('li');
-
     if (message.type === 'JOIN') {
         messageElement.classList.add('event-message');
         message.content = message.sender + ' joined!';
@@ -77,7 +79,8 @@ const addChatMessage = message => {
 
 function onMessageReceived(payload) {
     var message = JSON.parse(payload.body);
-	if (message.type === 'DRAW') {
+
+    if (message.type === 'DRAW') {
         paintDraw(message)
     }
     else {
@@ -90,7 +93,7 @@ var connectAndSubscribe = (roomid = 20) => {
     let room = `/topic/tema.${roomid}`
     var socket = new SockJS('/gs-guide-websocket');
     stompClient = Stomp.over(socket);
-	
+
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
         stompClient.subscribe(room, onMessageReceived);
@@ -103,7 +106,14 @@ var connectAndSubscribe = (roomid = 20) => {
 
 const logout = () => {
     console.log("logout")
+
     firebase.auth().signOut()
+}
+
+var unSuscribe = () => {
+    stompClient.disconnect(function () {
+        console.log("disconected")
+    })
 }
 
 firebase.auth().onAuthStateChanged(
@@ -124,7 +134,7 @@ const setLoggedElements = (user) => {
         uid,
         color
     }
-    
+
 }
 
 const setLogoutElements = () => {
@@ -257,9 +267,9 @@ const saveDraw = async () => {
     }
 }
 
-const handleMouseUp = e => {
+const handleMouseUp = async e => {
     drawing = false
-	saveDraw()
+    saveDraw()
     sendMessage()
 }
 
@@ -269,4 +279,4 @@ chatForm.addEventListener("submit", sendTextMessage)
 canvas.addEventListener('mousedown', handleMouseDown)
 canvas.addEventListener('mousemove', handleMouseMove)
 canvas.addEventListener('mouseup', handleMouseUp)
-drawLines() 
+drawLines()

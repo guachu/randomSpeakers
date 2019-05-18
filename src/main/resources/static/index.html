@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-    
-    <head>
+
+<head>
 	<meta charset="UTF-8">
 	<title> Random Speakers </title>
 
@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="css/skins/_all-skins.min.css">
 
 	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/csss?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
 	<!-- chat -->
 	<link rel="stylesheet" href="/css/chat.css" />
@@ -60,13 +60,13 @@
 							</li>
 							<li class="user-footer">
 								<div class="pull-right">
-									<a href="#" class="btn btn-default btn-flat">Sign out</a>
+									<button id="btnLogout" class="btn btn-default btn-flat">Sign out</button>
 								</div>
 							</li>
 						</ul>
 					</li>
 					<li>
-						<button id="btnLogout" class="btn btn-default btn-flat">Sign out</button>
+						<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
 					</li>
 				</ul>
 			</div>
@@ -97,8 +97,7 @@
 				<ul id="treeview-menu" class="treeview-menu">
 				</ul>
 			</li>
-			
-        </ul>
+		</ul>
 
 	</aside>
 
@@ -108,6 +107,7 @@
 			<div id="canvasWrapper">
 				<canvas id="drawArea" width="2000px" height="2000px"></canvas>
 			</div>
+
 
 			<form id="chat-form" autocomplete="off">
 				<div class="chat-space">
@@ -126,7 +126,7 @@
 			</form>
 		</section>
 	</div>
-			
+
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -141,7 +141,7 @@
 
 
 	<!-- <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script> -->
-	<!-- <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
 	<script>
 		var firebaseConfig = {
 			apiKey: "AIzaSyBn8IiJZ_71GbQcRmG9lSIP3ttW6ye0bvE",
@@ -153,14 +153,14 @@
 			appId: "1:698972313123:web:806e53cb0b6910e1"
 		}
 		firebase.initializeApp(firebaseConfig);
-	</script> -->
+	</script>
 
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
-	<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+	<!-- <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script> -->
 	<!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#config-web-app -->
 
-	<script>
+	<!-- <script>
 		// Your web app's Firebase configuration
 		var firebaseConfig = {
 			apiKey: "AIzaSyAxQN4tNoIv_JY8mgkHSBC3H-9hCXSZDnI",
@@ -173,10 +173,12 @@
 		};
 		// Initialize Firebase
 		firebase.initializeApp(firebaseConfig);
-	</script>
+	</script> -->
 
 	<script src="./js/chat.js"></script>
 	<script src="./js/rooms.js"></script>
 	<script src="/js/main.js"></script>
 	<!-- <script src="/js/drawAr.js"></script> -->
 </body>
+
+</html>
