@@ -28,19 +28,18 @@ public class IdentificacionController{
             
         } catch (Exception e) {
             //TODO: handle exception
-            return new ResponseEntity<>("Este usuario este ya existe",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Este usuario ya existe",HttpStatus.NOT_FOUND);
         }
     }
 
     @PostMapping
     public ResponseEntity<?> IdentificarUsuario(@RequestBody User usuario){
         try {
-            System.out.println(usuario);
             return new ResponseEntity<>(idSe.Autenticar(usuario), HttpStatus.ACCEPTED);
             
         } catch (Exception e) {
             //TODO: handle exception
-            return new ResponseEntity<>("Este usuario este erroneo",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Este usuario esta erroneo",HttpStatus.NOT_FOUND);
         }
     }
 

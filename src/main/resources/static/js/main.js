@@ -34,7 +34,6 @@ var app = (function () {
     var connectAndSubscribe = function () {
         var contentHeader = document.getElementById("tituloPrincipal");
         var botonOculto = document.getElementById("botonImagen");
-        console.log(contentHeader);
         if (roomid == 1){
             contentHeader.innerHTML = 'Carros';
             temaActivo = "/images/carro";
@@ -57,7 +56,6 @@ var app = (function () {
 
         }
         document.getElementById('messageArea').innerHTML = '';
-        console.log(document.getElementById('messageArea'));
         username = document.querySelector('#name').value.trim();
         if(username) {
             usernamePage.classList.add('hidden');
@@ -68,7 +66,6 @@ var app = (function () {
             //stompClient = Stomp.client('ws:localhost:8080/ws');
 
             stompClient.connect({}, function (frame) {
-                console.log('Connected: ' + frame);
                 stompClient.subscribe(room, onMessageReceived);
                 stompClient.send("/app/chat."+roomid+".addUser",
                     {},
@@ -119,7 +116,6 @@ var app = (function () {
     }
 
     function onError(error) {
-        console.log("Error: "+error);
         connectingElement.textContent = 'Could not connect to WebSocket server. Please refresh this page to try again!';
         connectingElement.style.color = 'red';
     }

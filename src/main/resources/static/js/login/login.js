@@ -11,8 +11,6 @@ var registerModule=(function(){
         else{
             var user = { nombre : nameF, mail : emailF, contrasenia : passwordF};
             postRequest("/api/identificacion/Registrar", user, function(data){
-            console.log("valor del data: "+data == true)
-            console.log("data: "+data)
             if(data){
                 location.href = "/index.html"; 
             }
@@ -46,8 +44,6 @@ var loginModule=(function(){
 
         var nameF = document.getElementById('name').value;
         var passwordF = document.getElementById('password').value;
-        console.log(nameF);
-        console.log(passwordF);
         var user = { nombre : nameF, contrasenia : passwordF};
         postRequest("/api/identificacion", user, function(data){
             //location.href = "/main.html"; 

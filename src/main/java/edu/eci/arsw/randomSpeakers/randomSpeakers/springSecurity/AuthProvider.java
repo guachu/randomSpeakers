@@ -29,11 +29,8 @@ public class AuthProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication auth) throws AuthenticationException {
 
         User usuarioTemporal = new User(auth.getPrincipal().toString(),auth.getCredentials().toString());
-        System.out.println("inicio el auth");
-        System.out.println("existe"+up.Autenticar(usuarioTemporal));
 		if (up.Autenticar(usuarioTemporal)) {
             
-            System.out.println("entro al auth");
 			return new UsernamePasswordAuthenticationToken(auth.getName(), auth.getCredentials(),new ArrayList<>());
 		}
         throw new BadCredentialsException("Username/Password does not match for " + auth.getPrincipal());

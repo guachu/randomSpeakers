@@ -72,16 +72,12 @@ public class IdentificacionServices{
 			PreparedStatement pstmt = conn.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 
 			pstmt.setString(1, usuario.getNombre());
-			pstmt.setString(2, usuario.getContrasenia());
-			System.out.println(usuario.getNombre());
-			System.out.println(usuario.getContrasenia());
-			
+			pstmt.setString(2, usuario.getContrasenia());			
 			correcto = pstmt.execute();
 			String res = "";
 			if (correcto){
 				ResultSet rs = pstmt.executeQuery();
 				while (rs.next()) {
-					System.out.println("query: "+rs.getString("exists"));
 					res = rs.getString("exists");
 				}
 			}
@@ -94,7 +90,6 @@ public class IdentificacionServices{
 			System.out.println(ex.getMessage());
 		}
 		
-		System.out.println("si: " + correcto);
 		return correcto;
     }
 
