@@ -195,11 +195,14 @@ var app = (function () {
 
         init: function (val) {
             if (roomid == null){
+                if(val == 0){
+                    val ++;
+                }
                 room = "/topic/tema." + val;  
                 roomid = val;
             }
             else{
-                if(val != roomid){
+                if(val != roomid && val != 0){
                     roomid = val;
                     
                 }
