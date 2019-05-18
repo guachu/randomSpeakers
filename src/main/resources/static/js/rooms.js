@@ -1,5 +1,5 @@
-var host = "http://localhost:8080/randoms/rooms"
-//var host = "https://randomspeakers.herokuapp.com/rooms"
+//var host = "http://localhost:8080/randoms/rooms"
+var host = "https://randomspeakers.herokuapp.com/rooms"
 
 const getDraw = async roomName => {
     let result = {}

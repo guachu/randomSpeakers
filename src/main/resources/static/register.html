@@ -20,6 +20,27 @@
 	
 	<!-- chat -->
 	<link rel="stylesheet" href="./css/register.css">
+	
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+		 https://firebase.google.com/docs/web/setup#config-web-app -->
+
+	<script>
+	  // Your web app's Firebase configuration
+	  var firebaseConfig = {
+		apiKey: "AIzaSyBn8IiJZ_71GbQcRmG9lSIP3ttW6ye0bvE",
+		authDomain: "randomspeakersag.firebaseapp.com",
+		databaseURL: "https://randomspeakersag.firebaseio.com",
+		projectId: "randomspeakersag",
+		storageBucket: "randomspeakersag.appspot.com",
+		messagingSenderId: "698972313123",
+		appId: "1:698972313123:web:806e53cb0b6910e1"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	</script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,58 +51,40 @@
 
   <!-- Google Font -->
   </head>
-<body>
-	<div id="register">
-	  <h3 class="text-center text-white pt-6s">RandomSpeakers</h3>
+	<body>
+		<div id="register">
+		  <h3 class="text-center text-white pt-6s">RandomSpeakers</h3>
 
-	  <div class="container">
-		<h4 class="text-center text-white pt-5">Register</h4>
+		  <div class="container">
+			<h4 class="text-center text-white pt-5">Register</h4>
 
-		<form id="register-form" method="post">
-			<div id="register-box" class="col-md-12">
-			  <div class="form-group has-feedback">
-				<input type="text" class="form-control" placeholder="Full name">
-				<span class="glyphicon glyphicon-user form-control-feedback"></span>
+			<form id="register-form" method="post">
+				<div id="register-box" class="col-md-12">
+				  <div class="form-group has-feedback">
+					<input id="email" type="email" class="form-control" placeholder="Email">
+					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+				  </div>
+				  <div class="form-group has-feedback">
+					<input id="pwd" type="password" class="form-control" placeholder="Password">
+					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+				  </div>
+				</div>
+			  <div id="register-row" class="row">
+				<!-- /.col -->
+				<div id="register-col" class="col-xs-4">
+				  <button onclick ="regi()" class="btn btn-primary btn-block btn-flat">Register</button>
+				</div>
+				<!-- /.col -->
 			  </div>
-			  <div class="form-group has-feedback">
-				<input type="email" class="form-control" placeholder="Email">
-				<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-			  </div>
-			  <div class="form-group has-feedback">
-				<input type="password" class="form-control" placeholder="Password">
-				<span class="glyphicon glyphicon-lock form-control-feedback"></span>
-			  </div>
-			</div>
-		  <div id="register-row" class="row">
-			<!-- /.col -->
-			<div id="register-col" class="col-xs-4">
-			  <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
-			</div>
-			<!-- /.col -->
+			</form>
+
+			<a id="message" href="login.html" class="text-center">I already have a membership</a>
 		  </div>
-		</form>
+		  <!-- /.form-box -->
+		</div>
+		<div id="background"></div>
+		<!-- /.register-box -->
+		<script src="./js/register.js"></script>
 
-		<a id="message" href="login.html" class="text-center">I already have a membership</a>
-	  </div>
-	  <!-- /.form-box -->
-	</div>
-	<div id="background"></div>
-	<!-- /.register-box -->
-
-	<!-- jQuery 3 -->
-	<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
-	<!-- Bootstrap 3.3.7 -->
-	<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-	<!-- iCheck -->
-	<script src="../../plugins/iCheck/icheck.min.js"></script>
-	<script>
-	  $(function () {
-		$('input').iCheck({
-		  checkboxClass: 'icheckbox_square-blue',
-		  radioClass: 'iradio_square-blue',
-		  increaseArea: '20%' /* optional */
-		});
-	  });
-	</script>
-</body>
+	</body>
 </html>
