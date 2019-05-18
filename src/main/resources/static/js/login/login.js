@@ -8,17 +8,20 @@ var registerModule=(function(){
         if (passwordF != cPasswordF){
             alert("La contraseña no concuerca con la confirmacion de esta");
         }
-        else{
+        if(passwordF == cPasswordF){
+            console.log("estoy entrando");
             var user = { nombre : nameF, mail : emailF, contrasenia : passwordF};
             postRequest("/api/identificacion/Registrar", user, function(data){
-            if(data){
-                location.href = "/index.html"; 
-            }
-            else{
-                alert("Lo sentimos ese nombre de usuario ya esta registrado");
-            }
+                console.log("valor del data: "+data == true)
+                console.log("data: "+data)
+                if(data){
+                    location.href = "/index.html"; 
+                }
+                else{
+                    alert("Lo sentimos ese nombre de usuario ya esta registrado");
+                }
             
-        });
+            });
         }
         
         
