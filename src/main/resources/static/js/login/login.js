@@ -9,11 +9,8 @@ var registerModule=(function(){
             alert("La contraseña no concuerca con la confirmacion de esta");
         }
         if(passwordF == cPasswordF){
-            console.log("estoy entrando");
             var user = { nombre : nameF, mail : emailF, contrasenia : passwordF};
             postRequest("/api/identificacion/Registrar", user, function(data){
-                console.log("valor del data: "+data == true)
-                console.log("data: "+data)
                 if(data){
                     location.href = "/index.html"; 
                 }

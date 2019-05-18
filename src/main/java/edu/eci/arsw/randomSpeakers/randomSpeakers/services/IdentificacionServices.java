@@ -25,11 +25,8 @@ public class IdentificacionServices{
 		Connection conn = null;
 		try {
 
-			System.out.println("crearla");
 			conn = DriverManager.getConnection(url, user, password);
 
-			System.out.println("creada");
-			System.out.println("Connected to the PostgreSQL server successfully.");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -41,7 +38,6 @@ public class IdentificacionServices{
 	public Boolean Registrar(User usuario){
 		boolean correcto = false;
 		if(!Autenticar(usuario)){
-			System.out.println("entrando a registrar");
 			String SQL = "INSERT INTO usuarios(nombre,contrasenia,email) " + "VALUES(?,?,?)";
 			try (Connection conn = connect();
 				PreparedStatement pstmt = conn.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS)) {
@@ -51,7 +47,6 @@ public class IdentificacionServices{
 				int l = pstmt.executeUpdate();
 				if (l == 1)
 					correcto = true;
-				System.out.println("valor de la ejecucion: "+l);
 			} catch (SQLException ex) {
 				System.out.println(ex.getMessage());
 			}
