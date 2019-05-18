@@ -29,7 +29,7 @@ body:before {
     left: 0;
     background: #128ff2;
     content: "";
-    z-index: 0;
+    z-index: -1;
 }
 
 .clearfix:after {
@@ -169,6 +169,7 @@ button.accent {
     padding: 10px 20px;
     margin: 0;
     border-bottom: 1px solid #f4f4f4;
+
 }
 
 #chat-page ul li p {
@@ -176,6 +177,7 @@ button.accent {
 }
 
 #chat-page .event-message {
+
     width: 100%;
     text-align: center;
     clear: both;
@@ -295,4 +297,9 @@ button.accent {
     .chat-header h2 {
         font-size: 1.1em;
     }
+}
+canvas{
+  background:#E91E63;
+  width:50%;
+  height:50%;
 }

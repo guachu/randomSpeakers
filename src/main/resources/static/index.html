@@ -1,178 +1,184 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title> Random Speakers </title>
-        
-        <!-- Responsive -->
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        
-        <!-- Hojas de estilo externas  -->
-        <link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/Ionicons/css/ionicons.min.css">
-        
-        <!-- Hojas de estilo del tema-->
-        <link rel="stylesheet" href="css/AdminLTE.min.css">
-        <link rel="stylesheet" href="css/skins/_all-skins.min.css">
-        
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-		
-		<!-- chat -->
-		<link rel="stylesheet" href="/css/main.css" />
-		
-	</head>
-    <body class="hold-transition skin-blue sidebar-mini">
-        <header class="main-header">
-            <a href="principal.html" class="logo">
-                <span class="logo-mini"><b>N</b>NP</span>
-                <span class="logo-lg"><b>Random</b>Speakers</span>
-            </a>
-            <nav class="navbar navbar-static-top">
-                <!-- TODO -->
-                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                </a>
-                <div class="navbar-custom-menu">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown user user-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="https://cnam.ca/wp-content/uploads/2018/06/default-profile-300x300.gif" class="user-image" alt="PerfilUsuario">
-                                <span class="hidden-xs">User</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                
-                                <li class="user-header">
-                                    <img src="https://cnam.ca/wp-content/uploads/2018/06/default-profile-300x300.gif" class="img-circle" alt="PerfilUsuario">
-                        
-                                    <p>
-                                        User
-                                        <small>Miembro desde Nov. 2012</small>
-                                    </p>
-                                </li>
-                                
-                                
-                                <li class="user-footer">
-                                    <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <aside class="main-sidebar">
-            <section class="sidebar">
-                <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="https://cnam.ca/wp-content/uploads/2018/06/default-profile-300x300.gif" class="img-circle" alt="PerfilUsuario">
-                    </div>
-                    <div class="pull-left info">
-                        <p>User</p>
-                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                    </div>
-                </div>
-            </section>
-            <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">NAVEGACIÓN</li>
-                <li class="active treeview">
+
+<head>
+	<meta charset="UTF-8">
+	<title> Random Speakers </title>
+
+	<!-- Responsive -->
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+	<!-- Hojas de estilo externas  -->
+	<link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/Ionicons/css/ionicons.min.css">
+
+	<!-- Hojas de estilo del tema-->
+	<link rel="stylesheet" href="css/AdminLTE.min.css">
+	<link rel="stylesheet" href="css/skins/_all-skins.min.css">
+
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+	<!-- chat -->
+	<link rel="stylesheet" href="/css/chat.css" />
+
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+	<header class="main-header">
+		<a href="principal.html" class="logo">
+			<span class="logo-mini"><b>N</b>NP</span>
+			<span class="logo-lg"><b>Random</b>Speakers</span>
+		</a>
+		<nav class="navbar navbar-static-top">
+			<!-- TODO -->
+			<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+				<span class="sr-only">Toggle navigation</span>
+			</a>
+			<div class="navbar-custom-menu">
+				<ul class="nav navbar-nav">
+					<li class="dropdown user user-menu">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<img src="https://cnam.ca/wp-content/uploads/2018/06/default-profile-300x300.gif"
+								class="user-image" alt="PerfilUsuario">
+							<span class="hidden-xs">User</span>
+						</a>
+						<ul class="dropdown-menu">
+
+							<li class="user-header">
+								<img src="https://cnam.ca/wp-content/uploads/2018/06/default-profile-300x300.gif"
+									class="img-circle" alt="PerfilUsuario">
+
+								<p>
+									User
+									<small>Miembro desde Nov. 2012</small>
+								</p>
+							</li>
+							<li class="user-footer">
+								<div class="pull-right">
+									<button id="btnLogout" class="btn btn-default btn-flat">Sign out</button>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<aside class="main-sidebar">
+		<section class="sidebar">
+			<div class="user-panel">
+				<div class="pull-left image">
+					<img src="https://cnam.ca/wp-content/uploads/2018/06/default-profile-300x300.gif" class="img-circle"
+						alt="PerfilUsuario">
+				</div>
+				<div class="pull-left info">
+					<p id="userName">User</p>
+					<a id="statusOnline" href="#"><i class="fa fa-circle text-success"></i> Online</a>
+				</div>
+			</div>
+		</section>
+		<ul class="sidebar-menu" data-widget="tree">
+			<li class="active">NAVEGACIÓN</li>
+			<li class="active" id="MenuTemas">
 				<a href="#">
-					<i class="fa fa-dashboard"></i> <span>Temas</span>
+					<i class="fa fa-dashboard"></i><span>Temas</span>
 					<span class="pull-right-container">
-					  <i class="fa fa-angle-left pull-right"></i>
+						<i class="fa fa-angle-left pull-right"></i>
 					</span>
 				</a>
-				  <ul class="treeview-menu">
-					<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Carros</a></li>
-					<li><a href="index.html"><i class="fa fa-circle-o"></i> Motos</a></li>
-					<li><a href="index.html"><i class="fa fa-circle-o"></i> Aves</a></li>
-				  </ul>
-                </li>
-                <li class="treeview">
-                </li>
-                <li class="treeview">
-                </li>
-            </ul>
-			
-        </aside>
-        <div id="username-page">
-                <div class="username-page-container">
-                        <h1 class="title">Type your username</h1>
-                        <form id="usernameForm" name="usernameForm">
-                                <div class="form-group">
-                                        <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    
-                                        <button type="submit" class="accent username-submit">Start Chatting</button>
-                                        
-                                </div>
-                        </form>
-                </div>
-        </div>
-		<div class="content-wrapper" style="min-height: 906px;">
-			<!-- Content Header (Page header) -->
-			<section class="content-header">
-			  <h1>Tema</h1>
-			  <ol class="breadcrumb">
-				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-				<li class="active">Dashboard</li>
-			  </ol>
-			</section>
+				<ul id="treeview-menu" class="treeview-menu">
+				</ul>
+			</li>
+		</ul>
 
-			<!-- Main content -->
-			<section class="content">
-			  <!-- Info boxes -->
-			  <!-- Main row -->
-				<div class="row">
-				<!-- Left col -->
-					<div class="col-md-12">
-					  <!-- CHAT -->
-					  
-					  <!-- /.box -->
-						<div class="row">
-							
-						</div>	
-						
-						<div id="chat-page" class="hidden">
-                                                    <div class="chat-container">
-                                                            <div class="chat-header">
-                                                                    <h2>Sala de chat</h2>
-                                                            </div>
-                                                            <div class="connecting">
-                                                                    Connecting...
-                                                            </div>
-                                                        
-                                                            <ul id="messageArea"></ul>
-                                                            
-                                                            <form id="messageForm" name="messageForm">
-                                                                    <div class="form-group">
-                                                                            <div class="input-group clearfix">
-                                                                                    <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
-                                                                                    <button type="submit" class="primary">Send</button>
-                                                                            </div>
-                                                                    </div>
-                                                            </form>
-                                                    </div>
-                                                    
-						</div>
-							
-						<!-- /.row -->
+	</aside>
+
+	<div class="content-wrapper" style="min-height: 906px;">
+		<!-- Main content -->
+		<section class="content">
+			<div id="canvasWrapper">
+				<canvas id="drawArea" width="2000px" height="2000px"></canvas>
+			</div>
+
+
+			<form id="chat-form" autocomplete="off">
+				<div class="chat-space">
+					<div class="messages-section">
+						<ul id="scroll" class="message-area">
+
+						</ul>
+					</div>
+					<div class="send-area">
+						<input type="text" name="messageInput" id="messageInput">
+					</div>
+					<div class="button-area">
+						<button type="submit">Enviar</button>
 					</div>
 				</div>
-				<!-- /.row -->
-			</section>
-			<!-- /.content -->
-		</div>
-		
-		
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-		<script src="/js/main.js"></script>
-    </body>
+			</form>
+		</section>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+
+	<!-- <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script> -->
+	<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+	<script>
+		var firebaseConfig = {
+			apiKey: "AIzaSyBn8IiJZ_71GbQcRmG9lSIP3ttW6ye0bvE",
+			authDomain: "randomspeakersag.firebaseapp.com",
+			databaseURL: "https://randomspeakersag.firebaseio.com",
+			projectId: "randomspeakersag",
+			storageBucket: "randomspeakersag.appspot.com",
+			messagingSenderId: "698972313123",
+			appId: "1:698972313123:web:806e53cb0b6910e1"
+		}
+		firebase.initializeApp(firebaseConfig);
+	</script>
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<!-- <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script> -->
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+	<!-- <script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyAxQN4tNoIv_JY8mgkHSBC3H-9hCXSZDnI",
+			authDomain: "borrame-5531a.firebaseapp.com",
+			databaseURL: "https://borrame-5531a.firebaseio.com",
+			projectId: "borrame-5531a",
+			storageBucket: "borrame-5531a.appspot.com",
+			messagingSenderId: "513107133097",
+			appId: "1:513107133097:web:9a946730f34764be"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+	</script> -->
+
+	<script src="./js/chat.js"></script>
+	<script src="./js/rooms.js"></script>
+	<script src="/js/main.js"></script>
+	<!-- <script src="/js/drawAr.js"></script> -->
+</body>
+
 </html>
